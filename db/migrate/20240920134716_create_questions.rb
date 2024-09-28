@@ -1,8 +1,8 @@
 class CreateQuestions < ActiveRecord::Migration[7.2]
   def change
     create_table :questions do |t|
-      t.string :body
-      t.integer :testid
+      t.string :body, null: false
+      t.references :test, foreign_key: true
 
       t.timestamps
     end
