@@ -11,19 +11,19 @@ class Test < ApplicationRecord
   scope :medium, -> { where(level: 2..4) }
   scope :complicated, -> { where(level: 5..) }
 
-  scope :selected_by_category, -> (category_title) { joins(:category).where(categories: {title: category_title}).order(title: :desc).pluck(:title) }
-  #with ruby methods
-  scope :selected_by_category_v2, -> (category_title) { select{ |x| x.category.title == category_title}.sort_by(&:title).reverse.pluck(:title) }
-
+  scope :selected_by_category, -> (category_title) { joins(:category).where(categories: {title: category_title}) }
+  
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, in: 0.. }
 
   class << self
     def show_list_by_category(category_title)
-      Category.find_by!(title: category_title).tests.order(title: :desc).pluck(:title)
+      selected_by_category(category_title).order(title: :desc).pluck(:title)
     end
   end
 
 
 
 end
+
+#add_index(:tests, [:title, :level], unique: true)
