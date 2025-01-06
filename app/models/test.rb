@@ -21,9 +21,5 @@ class Test < ApplicationRecord
       selected_by_category(category_title).order(title: :desc).pluck(:title)
     end
   end
-
-
-
 end
 
-#add_index(:tests, [:title, :level], unique: true)

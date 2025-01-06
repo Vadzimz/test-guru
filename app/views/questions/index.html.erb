@@ -1,0 +1,9 @@
+<h1>Questions of test: <%= @test.title %></h1>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <%= link_to question.body, question %>
+    </li>
+  <% end %>
+</ul>
