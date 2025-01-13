@@ -1,0 +1,17 @@
+<h1><%= @test.title %></h1>
+<p><b>The Test Questions</b></p>
+<table>
+  <tr>
+    <th>Question</th>
+    <th colspan="3">Actions</th>
+  </tr>
+  <%= render partial: "questions/question", collection: @test.questions %>
+</table>
+<ul>
+  <li><%= link_to "Edit", edit_test_path(@test) %></li>
+  <li><%= link_to "Delete", test_path(@test), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"} %></li>
+  <li><%= link_to "Show all tests", tests_path %></li>
+  <li><%= link_to "Add a question", new_test_question_path(@test)%></li>
+</ul>
