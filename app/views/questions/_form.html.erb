@@ -1,5 +1,5 @@
 <h1><%= question_header(question) %></h1>
-<%= form_with model: nested ? [test, question] : question do |form| %>
+<%= form_with model: [test, question] do |form| %>
   <div>
     <%= form.label :body %><br>
     <%= form.text_field :body %>
