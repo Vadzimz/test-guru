@@ -9,6 +9,6 @@ class Answer < ApplicationRecord
   private
 
   def validate_count_of_question_answers
-   errors.add(:base, "answers count for this question is out of range 1..4") unless (question.answers.count + 1).between? 1, 4
+    errors.add(:base, "answers count for this question is out of range 1..4") unless question.answers.count < 4
   end
 end
