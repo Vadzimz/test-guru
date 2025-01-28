@@ -8,10 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-#categories = %w(Javascript  SQL  Java  Ruby).each {|cat| Category.find_or_create_by!(title: cat)}
-
 categories = Category.create!([{title: "Javascript"}, {title: "SQL"}, {title: "Java"}, {title: "Ruby"}])
-
 
 users = User.create!([
   {name: "Brenda", surname: "Nazario", email: "BrendaMNazario@rhyta.com"},
@@ -20,14 +17,10 @@ users = User.create!([
   {name: "Madeleine", surname: "Hamilton", email: "MadeleineHamilton@armyspy.com"},
   {name: "Lewis", surname: "Potts", email: "LewisPotts@rhyta.com"}])
 
-#User.create!(users)
-
 tests = Test.create!([
-  {title: "Javascript test", level: 1, category_id: categories[0].id}, 
-  {title: "SQL basics", category_id: categories[1].id}, 
-  {title: "Java test", level: 1, category_id: categories[2].id}])
-
-#Test.create!(tests)
+  {title: "Javascript test", level: 1, category_id: categories[0].id, author_id: users[0].id}, 
+  {title: "SQL basics", category_id: categories[1].id, author_id: users[0].id}, 
+  {title: "Java test", level: 1, category_id: categories[2].id, author_id: users[0].id}])
 
 questions = Question.create!([
   {body: "Which function is used to serialize an object into a JSON string in Javascript?", test_id: tests[0].id},
@@ -35,8 +28,6 @@ questions = Question.create!([
   {body: "What command is used to create a new table in SQL?", test_id: tests[1].id},
   {body: "Automatic type conversion is possible in which of the possible cases?", test_id: tests[2].id},
   {body: "Identify the Microsoft solution for providing dynamic web content", test_id: tests[2].id}])
-
-#Question.create!(questions)        
 
 answers = Answer.create!([
   {body: "stringify()", correct: true, question_id: questions[0].id},
@@ -60,8 +51,6 @@ answers = Answer.create!([
   {body: "Both A and B", question_id: questions[4].id},
   {body: "None of the above", question_id: questions[4].id}])
 
-#Answer.create!(answers)
-
 test_passages = TestPassage.create!([{user_id: users[0].id, test_id: tests[0].id, correct_answers: 2},
   {user_id: users[0].id, test_id: tests[1].id, correct_answers: 3},
   {user_id: users[0].id, test_id: tests[2].id, correct_answers: 1},
@@ -74,6 +63,4 @@ test_passages = TestPassage.create!([{user_id: users[0].id, test_id: tests[0].id
   {user_id: users[4].id, test_id: tests[0].id, correct_answers: 3},
   {user_id: users[4].id, test_id: tests[1].id, correct_answers: 3},
   {user_id: users[4].id, test_id: tests[2].id, correct_answers: 2}])
-
-#TestPassage.create!(test_passages)
 

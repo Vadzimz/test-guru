@@ -1,0 +1,4 @@
+<h1><%= test_passage_result_header(@test_passage) %></h1>
+<p> Your success factor is <span style = <%= success_color_indicator(@test_passage.success?)%> > <%= @test_passage.success_percentage %> %</span></p>
+
+<%= link_to "Back to all tests page", tests_path %>
