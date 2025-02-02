@@ -7,12 +7,11 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def tests_list_by_level(level)
-    
-    #with join
-    #TestPassage.joins(:user, :test).where(test: {level: level}, user: {id: self.id}).pluck(:title)
-    
-    #with association
     tests.where(level: level).pluck(:title)
+  end
+
+  def test_passage(test)
+    test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
 end

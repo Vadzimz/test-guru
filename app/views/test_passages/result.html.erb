@@ -1,0 +1,6 @@
+<% tp = test_passage_result_data(@test_passage)%>
+
+<h1><%= tp[:header] %></h1>
+<p> Your success factor is <span style = <%= tp[:success_color]%> > <%= @test_passage.success_percentage %> %</span></p>
+
+<%= link_to "Back to all tests page", tests_path %>
