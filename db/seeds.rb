@@ -11,11 +11,11 @@
 categories = Category.create!([{title: "Javascript"}, {title: "SQL"}, {title: "Java"}, {title: "Ruby"}])
 
 users = User.create!([
-  {name: "Brenda", surname: "Nazario", email: "BrendaMNazario@rhyta.com"},
-  {name: "Zara", surname: "Rose", email: "ZaraRose@jourrapide.com"},
-  {name: "Corey", surname: "Warren", email: "CoreyWarren@armyspy.com"},
-  {name: "Madeleine", surname: "Hamilton", email: "MadeleineHamilton@armyspy.com"},
-  {name: "Lewis", surname: "Potts", email: "LewisPotts@rhyta.com"}])
+  {name: "Brenda", surname: "Nazario", email: "BrendaMNazario@rhyta.com", password: "qwerty", password_confirmation: "qwerty"},
+  {name: "Zara", surname: "Rose", email: "ZaraRose@jourrapide.com", password: "qwerty", password_confirmation: "qwerty"},
+  {name: "Corey", surname: "Warren", email: "CoreyWarren@armyspy.com", password: "qwerty", password_confirmation: "qwerty"},
+  {name: "Madeleine", surname: "Hamilton", email: "MadeleineHamilton@armyspy.com", password: "qwerty", password_confirmation: "qwerty"},
+  {name: "Lewis", surname: "Potts", email: "LewisPotts@rhyta.com", password: "qwerty", password_confirmation: "qwerty"}])
 
 tests = Test.create!([
   {title: "Javascript test", level: 1, category_id: categories[0].id, author_id: users[0].id}, 
@@ -63,4 +63,3 @@ test_passages = TestPassage.create!([{user_id: users[0].id, test_id: tests[0].id
   {user_id: users[4].id, test_id: tests[0].id, correct_answers: 3},
   {user_id: users[4].id, test_id: tests[1].id, correct_answers: 3},
   {user_id: users[4].id, test_id: tests[2].id, correct_answers: 2}])
-
