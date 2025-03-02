@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <ul class="nav-list">
+
+    <li><%= link_to "TEST GURU PROJECT", logged_in? ? tests_path : login_path %></li>
+
+    <% unless logged_in? %>
+      <li><%= link_to "Sign Up", signup_path %></li>
+      <li><%= link_to "Log In", login_path %></li>
+    <% end %>
+
+    <% if logged_in? %>
+      <li><%= link_to "Log Out", logout_path %></li>
+    <% end %>
+
+  </ul>
+
+  <% if logged_in? %>
+    <div class="rightNav">Welcome, <b><%= current_user.full_name %></b> Guru</div>
+  <% else %>
+    <div class="rightNav">Please, sign up or log in</div>
+  <% end %>
+
+</nav>

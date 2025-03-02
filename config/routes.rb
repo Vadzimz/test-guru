@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,6 +14,13 @@ Rails.application.routes.draw do
   # root "posts#index"
   
   root to: "tests#index"
+
+  get :signup, to: 'users#new'
+  get :login, to: "sessions#new"
+  get :logout, to: "sessions#destroy"
+
+  resources :users, only: :create
+  resources :sessions, only: :create
 
   resources :tests do 
     resources :questions, shallow: true, except: :index do
@@ -29,6 +37,5 @@ Rails.application.routes.draw do
       get :result
     end
   end
-
 
 end

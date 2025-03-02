@@ -1,0 +1,16 @@
+<%= form_with url: sessions_path, local: true,  data: { turbo: false } do |form| %>
+
+  <%= render "shared/flash" %>
+
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_field :email, id: :email %>
+  </p>
+
+  <p>
+    <%= form.label :password %><br>
+    <%= form.password_field :password, id: :password %>
+  </p>
+
+  <p><%= form.submit 'Enter' %></p>
+<% end %>
